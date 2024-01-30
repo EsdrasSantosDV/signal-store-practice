@@ -1,0 +1,15 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav [mode]="'push'">
+    <mat-nav-list (click)="sidenav.close()"> </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <app-header (sidenavOpen)="sidenavOpen()">
+
+    </app-header>
+    <section>
+      <router-outlet></router-outlet>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

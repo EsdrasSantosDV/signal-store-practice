@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+  @switch (fieldGeneric.controlType) {
+    @case (TypeControlEnum.TEXT_BOX) {
+      <mat-form-field appearance="outline" class="full-width no-padding">
+        <mat-label>{{ fieldGeneric.label }}</mat-label>
+        <input
+          [type]="fieldGeneric.type"
+          [formControlName]="fieldGeneric.key"
+          matInput
+          class="text-uppercase"
+          />
+      </mat-form-field>
+    }
+    @case (TypeControlEnum.DROP_DOWN) {
+      <mat-form-field appearance="outline" class="full-width no-padding">
+        <mat-label>{{ fieldGeneric.label }}</mat-label>
+        <mat-select
+          [formControlName]="fieldGeneric.key"
+          disableOptionCentering
+          disableRipple
+          [multiple]="true"
+          >
+          @for (opt of fieldGeneric.options; track opt) {
+            <mat-option
+              [value]="opt.key"
+              >
+              {{ opt.value }}</mat-option
+              >
+            }
+          </mat-select>
+        </mat-form-field>
+      }
+    }
+  </form>

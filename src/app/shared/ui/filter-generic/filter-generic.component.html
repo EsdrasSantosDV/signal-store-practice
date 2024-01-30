@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Filtros do {{ formHeaderTitle }}</mat-card-title>
+    <mat-card-subtitle
+      >Selecione os filtros que deseja utilizar!</mat-card-subtitle
+    >
+  </mat-card-header>
+
+  <mat-card-content>
+    <app-generic-forms-dynamic
+      class="full-width"
+      [fieldsGeneric]="fieldsGeneric"
+      (formEmitValues)="submitAction($event)"></app-generic-forms-dynamic>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,71 @@
+.card-table {
+  height: 500;
+  overflow-x: auto;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow:
+    0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 2rem;
+   
+    overflow: hidden;
+    border-spacing: 0px 3px;
+
+   
+
+    tr {
+      transition: background-color 0.3s;
+      height: 4rem;
+      &:hover {
+        background-color: rgba(63, 81, 181, 0.1);
+      }
+
+      &:nth-child(even) {
+        background-color: #fafafa;
+      }
+
+      &:not(:has(th)):nth-child(even) {
+        background-color: #fafafa;
+      }
+
+      td {
+        &:first-child {
+          border-left: 3px solid #0b0938;
+        }
+        border-bottom: none;
+        border-top: 1px solid rgba(224, 224, 224, 0.5);
+        padding: 16px 24px;
+        text-align: left;
+        vertical-align: middle;
+
+        &:first-child {
+          border-left: 3px solid #3b4f79;
+        }
+
+        .container-value {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      th {
+        background: #3f51b5;
+        &:first-child {
+          border-left: 3px solid #3f51b5;
+          border-top-left-radius: 0.25rem;
+        }
+        color: white;
+        padding: 16px 24px;
+        text-align: left;
+        font-weight: 500;
+      }
+    }
+  }
+}

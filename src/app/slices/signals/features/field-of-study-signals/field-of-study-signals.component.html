@@ -1,0 +1,63 @@
+@if (loadOptions$ | async) {
+  <div class="scale-100">
+    <div class="w-full h-full p-6">
+      <div>
+        <h1 class="text-3xl text-center text-black">
+          Calculator using Signals
+        </h1>
+      </div>
+      <div class="bg-primary-primary p-6 max-w-xl mx-auto rounded-lg shadow-lg">
+        <div class="bg-white p-4 rounded mb-6">
+          <div class="flex flex-col text-right text-black text-3xl pr-2">
+            @if(vm().isCalculate)
+            {
+              <div>
+                {{
+                  vm().lastExpression
+                }}
+              </div>
+              <div>
+                {{
+                  vm().result
+                }}
+              </div>
+            }
+            @else {
+              @if (
+                vm().isValidation
+              ) {
+                <div>
+                  {{
+                    vm().lastExpression
+                  }}
+                </div>
+                <div>
+                  {{
+                    vm().expression
+                  }}
+                </div>
+              }
+              @else {
+                <div>
+                  Error
+                </div>
+              }
+            }
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-4">
+          @for (
+            option of  vm().optionsCalculator;
+            track option.id
+          ) {
+            <button mat-button class="bg-primary-primary text-white" (click)="facadeCalculator.newActionCalculate(option)">
+              {{
+              option.visibleValue
+              }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}
