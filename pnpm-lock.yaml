@@ -48,8 +48,8 @@ dependencies:
     specifier: 17.0.1
     version: 17.0.1(@angular/common@17.0.8)(@angular/core@17.0.8)(@angular/router@17.0.8)(@ngrx/store@17.0.1)(rxjs@7.8.1)
   '@ngrx/signals':
-    specifier: 17.0.1
-    version: 17.0.1(@angular/core@17.0.8)(rxjs@7.8.1)
+    specifier: 17.1.0
+    version: 17.1.0(@angular/core@17.0.8)(rxjs@7.8.1)
   '@ngrx/store':
     specifier: 17.0.1
     version: 17.0.1(@angular/core@17.0.8)(rxjs@7.8.1)
@@ -3058,8 +3058,8 @@ packages:
     resolution: {integrity: sha512-yOQxy6PWKbxS2JhE54Li5qAJVruZGkUrsVCcx6pFKssKMGBG1R0EHBZ0BAmFtkiHvyHz3P/RUiaNf+UbWPPgIw==}
     dev: true
 
-  /@ngrx/signals@17.0.1(@angular/core@17.0.8)(rxjs@7.8.1):
-    resolution: {integrity: sha512-YxnYoDlm0Q0Wighspwg3mgUqnOuIiGP3jvqcr1R/ZMIQ2e0IyzJR2QhtZ1etFxB6NhyDuGtG8FWU2+0cgc0w/w==}
+  /@ngrx/signals@17.1.0(@angular/core@17.0.8)(rxjs@7.8.1):
+    resolution: {integrity: sha512-CF387SNYUoPeFCh13S/vmsyFRZHXm7cZjxuwXbI3AWDS/JXO9GC2061O9f0Fy7DIyQtDisY9uGV5eOiKTYmT0w==}
     peerDependencies:
       '@angular/core': ^17.0.0
       rxjs: ^6.5.3 || ^7.4.0

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { materialModules } from '../../../../shared/utils/material/material-module';
-import { FacadeCalculator } from '../../data-access/facade-calculator';
+import { BooksStore, FacadeCalculator } from '../../data-access/facade-calculator';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -15,4 +15,6 @@ export class FieldOfStudySignalsComponent {
   facadeCalculator = inject(FacadeCalculator);
   vm = this.facadeCalculator.vm$;
   loadOptions$ = this.facadeCalculator.loadOptions();
+
+  store=inject(BooksStore)
 }

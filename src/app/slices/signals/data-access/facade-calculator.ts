@@ -1,9 +1,10 @@
-import { effect, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { OptionCalculator } from '../../../shared/types/interfaces/option-calculator';
 import { CalculatorHttpService } from '../../../core/services/calculator-http-service';
 import { filter, tap } from 'rxjs';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { CalculatorService } from '../utils/calculator.shutting.hard.service';
+import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from '@ngrx/signals';
 
 export type CalculatorState = {
   optionsCalculator: OptionCalculator[];
@@ -24,6 +25,41 @@ export const initialState: CalculatorState = {
 };
 
 
+
+export const BooksStore = signalStore(
+  { providedIn: 'root' },
+  withState(initialState),
+  withHooks({
+    onInit({ expression }) {
+
+    },
+  }),
+  withComputed((store)=>{
+    return {
+
+    }
+  }),
+  withMethods((store,httpCalculator = inject(CalculatorHttpService),calculatorService = inject(CalculatorService))=>({
+    loadOptions() {
+      return httpCalculator.getCalculator().pipe(
+        tap(value =>
+          patchState(store, {
+            optionsCalculator: value,
+          })
+        )
+      )
+    },
+    newActionCalculate(option: OptionCalculator) {
+      patchState(store, {
+        expression: store.expression + option.visibleValue,
+        isCalculate:false,
+      })
+    },
+  })))
+
+
+
+
 @Injectable({ providedIn: 'root' })
 export class FacadeCalculator {
   private state = signal(initialState);
@@ -31,12 +67,12 @@ export class FacadeCalculator {
   #httpCalculator = inject(CalculatorHttpService);
   #calculatorService = inject(CalculatorService);
 
-  
+
   expresionFinalizated$=toObservable(this.state).pipe(
     filter(state=>state.expression.length>0 && state.expression[state.expression.length-1]==='='),
     tap((state) => {
       console.log('expresionFinalizated$', state);
-      
+
         const expression=state.expression.slice(0,state.expression.length-1);
         const result=this.#calculatorService.calculateExpression(expression);
         this.state.update(state=>({...state,
