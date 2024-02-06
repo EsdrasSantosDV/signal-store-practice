@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { materialModules } from '../../../../shared/utils/material/material-module';
-import { BooksStore, FacadeCalculator } from '../../data-access/facade-calculator';
+import { BooksStore } from '../../data-access/facade-calculator';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -10,11 +10,10 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './field-of-study-signals.component.html',
   styleUrl: './field-of-study-signals.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers:[BooksStore]
 })
 export class FieldOfStudySignalsComponent {
-  facadeCalculator = inject(FacadeCalculator);
-  vm = this.facadeCalculator.vm$;
-  loadOptions$ = this.facadeCalculator.loadOptions();
+  readonly store = inject(BooksStore);
 
-  store=inject(BooksStore)
+
 }
